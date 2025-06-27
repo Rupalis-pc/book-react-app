@@ -29,7 +29,7 @@ const AddBookForm = () => {
     coverImageUrl: "",
   });
 
-  console.log(formData.genre);
+  // console.log(formData.genre);
 
   const handleChange = (event) => {
     // console.log(event.target);
@@ -50,13 +50,16 @@ const AddBookForm = () => {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/books", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "https://be-4-assignment1-blush.vercel.app/books",
+        {
+          method: "POST",
+          body: JSON.stringify(formData),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
       if (!response.ok) {
         console.log("Failed to add Book");
