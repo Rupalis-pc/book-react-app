@@ -2,7 +2,7 @@ import useFetch from "../useFetch";
 
 const BookByAuthor = ({ author }) => {
   const { data, loading, error } = useFetch(
-    `http://localhost:3000/books/author/${author}`
+    `https://be-4-assignment1-blush.vercel.app/books/${author}`
   );
 
   // console.log(data);

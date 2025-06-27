@@ -29,7 +29,7 @@ const AddBookForm = () => {
     coverImageUrl: "",
   });
 
-  console.log(formData.genre)
+  console.log(formData.genre);
 
   const handleChange = (event) => {
     // console.log(event.target);
