@@ -1,0 +1,44 @@
+import useFetch from "../useFetch";
+
+const Books = () => {
+  const { data, loading, error } = useFetch(`http://localhost:3000/books`);
+
+  // console.log(data);
+
+  const handleDelete = async (bookId) => {
+    try {
+      const response = await fetch(`http://localhost:3000/books/${bookId}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        console.log("Failed to delete Book.");
+      }
+
+      const deleteData = response.json();
+      window.location.reload();
+
+      if (deleteData) {
+        console.log("Book deleted successfully.");
+      }
+    } catch (error) {
+      console.log("Error deleting Data.");
+    }
+  };
+
+  return (
+    <div>
+      <h1>All Books</h1>
+      <ul>
+        {data?.map((book) => (
+          <li key={book._id}>
+            {book.title}{" "}
+            <button onClick={() => handleDelete(book._id)}>Delete</button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default Books;
